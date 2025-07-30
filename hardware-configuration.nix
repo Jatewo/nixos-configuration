@@ -8,13 +8,15 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     open = true;
     nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   hardware.graphics.enable32Bit = true;

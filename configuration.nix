@@ -53,6 +53,8 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.wayland.enable = false;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -107,7 +109,12 @@
     brave
     github-desktop
     git
+    vulkan-tools
   ];
+
+  xdg.portal = {
+    enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

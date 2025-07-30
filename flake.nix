@@ -6,17 +6,18 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs :
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-      in {
-        nixosConfigurations.jacob = nixpkgs.lib.nixosSystem {
-          inherit system;
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    let
+      systems = [ "x86_64-linux" ];
+    in {
+      nixosConfigurations = {
+        jacob = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
             ./configuration.nix
           ];
           specialArgs = { inherit inputs; };
         };
-      });
+      };
+    };
 }

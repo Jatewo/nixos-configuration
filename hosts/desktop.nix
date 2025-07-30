@@ -33,6 +33,18 @@
   #   enableSSHSupport = true;
   # };
 
+  fileSystems."/mnt/shared" = {
+    # Use your partition's UUID here. This is the recommended and safest method.
+    device = "UUID=443D-A611";
+
+    # Replace with the file system type (e.g., "ext4", "ntfs", "btrfs")
+    fsType = "exfat";
+
+    # Mount options. "nofail" is a useful option that allows the system to boot
+    # even if the drive is not plugged in.
+    options = [ "defaults" "nofail" ];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -54,5 +66,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  system.nixos.label = "rev-30-07-2025-labeling-fix";
+  system.nixos.label = "rev-30-07-2025-mount-shared-partition";
 }

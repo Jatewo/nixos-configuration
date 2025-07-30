@@ -11,5 +11,6 @@
   environment.systemPackages = with pkgs; [
     steam
     discord
+    vulkan-tools # Graphics API for Steam
   ];
 }

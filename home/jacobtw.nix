@@ -7,7 +7,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    kate
+    kdePackages.kate
     git
     neofetch
   ];

@@ -12,6 +12,7 @@
     steam
     discord
     legendary-gl
+    heroic
     vulkan-tools # Graphics API for Steam
   ];
 }

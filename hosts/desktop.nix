@@ -12,7 +12,6 @@
     ../modules/development.nix
   ];
 
-  home-manager.users.jacobtw
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

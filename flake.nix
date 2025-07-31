@@ -31,6 +31,9 @@
             # You can also define your packages here using a single pkgs import
             ({ config, pkgs, ... }: {
               nixpkgs.config.allowUnfree = true;
+	      nixpkgs.config.permittedInsecurePackages = [
+	        "libsoup-2.74.3"
+	      ];
             })
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

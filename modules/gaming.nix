@@ -15,5 +15,6 @@
     heroic
     satisfactorymodmanager
     vulkan-tools # Graphics API for Steam
+    vkd3d-proton
   ];
 }

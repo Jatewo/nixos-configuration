@@ -13,6 +13,7 @@
     discord
     legendary-gl
     heroic
+    satisfactorymodmanager
     vulkan-tools # Graphics API for Steam
   ];
 }

@@ -12,6 +12,10 @@
     neofetch
   ];
 
+  xdg.configFile."nvim/init.lua".text = ''
+  -- your init.lua contents here
+  '';
+
   programs.neovim = {
     enable = true;
     withNodeJs = true;

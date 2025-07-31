@@ -42,7 +42,12 @@
 
     # Mount options. "nofail" is a useful option that allows the system to boot
     # even if the drive is not plugged in.
-    options = [ "defaults" "nofail" ];
+    options = [ 
+      "defaults"
+      "nofail"
+      "uid=1000"
+      "gid=100"
+    ];
   };
 
   # Enable CUPS to print documents.

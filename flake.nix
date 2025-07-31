@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }:
     let
       # Define a common function to import nixpkgs and set config
       importPkgs = system: import nixpkgs {
@@ -32,6 +32,12 @@
             ({ config, pkgs, ... }: {
               nixpkgs.config.allowUnfree = true;
             })
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.users.jacobtw = import ./home/jacobtw.nix;
+            }
           ];
         };
         # You could add other hosts here, e.g., 'laptop'

@@ -10,7 +10,7 @@
     kate
     git
     neofetch
-  ]
+  ];
 
   programs.neovim = {
     enable = true;

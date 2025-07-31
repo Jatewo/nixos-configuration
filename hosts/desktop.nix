@@ -12,6 +12,7 @@
     ../modules/development.nix
   ];
 
+  home-manager.users.jacobtw
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -66,5 +67,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  system.nixos.label = "rev-30-07-2025-mount-shared-partition";
+  system.nixos.label = "rev-31-07-2025-home-manager-setup";
 }

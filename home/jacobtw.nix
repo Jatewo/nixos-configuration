@@ -24,8 +24,12 @@
         lazypath,
       })
     end
-    vim.opt.clipboard:append("unnamedplus")
+    vim.opt.clipboard = "unnamedplus"
     vim.opt.rtp:prepend(lazypath)
+
+    vim.api.nvim_create_user_command('W', function()
+      vim.cmd('SudaWrite')
+    end, { desc = 'Write file with sudo' })
 
     require("lazy").setup({
       {
@@ -69,6 +73,12 @@
         config = function()
           vim.cmd([[colorscheme tokyonight]])
         end,
+      },
+      {
+        "lambdalisue/suda.vim",
+	config = function()
+	  vim.cmd('runtime plugin/suda.vim')
+	end,
       },
     })
   '';

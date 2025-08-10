@@ -24,6 +24,7 @@
         lazypath,
       })
     end
+    vim.opt.clipboard:append("unnamedplus")
     vim.opt.rtp:prepend(lazypath)
 
     require("lazy").setup({

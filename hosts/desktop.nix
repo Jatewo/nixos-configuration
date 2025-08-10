@@ -50,6 +50,11 @@
     ];
   };
 
+  fileSystems."/home/jacobtw/.steam/steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" = {
+    device = "/mnt/shared/OneDrive/Dokumenter/Sports Interactive/Football Manager 2024";
+    options = [ "bind" ];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

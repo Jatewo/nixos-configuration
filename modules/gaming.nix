@@ -20,5 +20,6 @@
     temurin-bin-21 # Java 21 for Minecraft 1.20+
     temurin-bin-8 # Java 8 for Minecraft 1.12 and older
     openlinkhub # iCue
+    lutris
     ];
 }

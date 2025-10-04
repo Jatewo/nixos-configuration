@@ -76,5 +76,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  system.nixos.label = "rev-31-07-2025-shared-permissions";
+  system.nixos.label = "rev-04-10-2025-posy-cursors";
 }

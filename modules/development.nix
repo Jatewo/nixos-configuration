@@ -10,5 +10,6 @@
     github-desktop
     git
     wl-clipboard
+    xclip
   ];
 }

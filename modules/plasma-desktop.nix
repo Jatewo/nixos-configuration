@@ -10,12 +10,15 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.wayland.enable = false;
 
+  
+
   xdg.portal = {
     enable = true;
   };
 
   environment.systemPackages = with pkgs; [
     brave
+    pkgs.posy-cursors
   ];
 
 }

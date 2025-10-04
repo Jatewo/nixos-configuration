@@ -54,23 +54,6 @@
   #   enableSSHSupport = true;
   # };
 
-  fileSystems."/mnt/shared" = {
-    # Use your partition's UUID here. This is the recommended and safest method.
-    device = "UUID=443D-A611";
-
-    # Replace with the file system type (e.g., "ext4", "ntfs", "btrfs")
-    fsType = "exfat";
-
-    # Mount options. "nofail" is a useful option that allows the system to boot
-    # even if the drive is not plugged in.
-    options = [ 
-      "defaults"
-      "nofail"
-      "uid=1000"
-      "gid=100"
-    ];
-  };
-
   fileSystems."/home/jacobtw/.steam/steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" = {
     device = "/mnt/shared/OneDrive/Dokumenter/Sports Interactive/Football Manager 2024";
     options = [ "bind" ];

@@ -18,6 +18,7 @@
 
   environment.systemPackages = with pkgs; [
     brave
+    pkgs.parsec-bin
     pkgs.posy-cursors
   ];
 

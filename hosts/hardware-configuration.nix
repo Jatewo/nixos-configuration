@@ -24,17 +24,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/shared" =
-    { device = "/dev/disk/by-uuid/443D-A611";
-      fsType = "exfat";
-    };
-
-  fileSystems."/home/jacobtw/.local/share/Steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" =
-    { device = "/mnt/shared/OneDrive/Dokumenter/Sports\040Interactive/Football\040Manager\0402024";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

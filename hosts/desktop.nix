@@ -54,6 +54,12 @@
   #   enableSSHSupport = true;
   # };
 
+  fileSystems."/mnt/shared" = {
+    device = "/dev/disk/by-uuid/443D-A611";
+    fsType = "exfat";
+    options = [ "uid=1000" "gid=100" "dmask=0000" "fmask=0111" "nofail" ];
+  };
+
   fileSystems."/home/jacobtw/.steam/steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" = {
     device = "/mnt/shared/OneDrive/Dokumenter/Sports Interactive/Football Manager 2024";
     options = [ "bind" ];

@@ -19,6 +19,7 @@
   environment.systemPackages = with pkgs; [
     brave
     pkgs.parsec-bin
+    pkgs.ytmdesktop
     pkgs.posy-cursors
   ];
 

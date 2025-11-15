@@ -27,7 +27,16 @@
   hardware.steam-hardware.enable = true; # Enable 32-bit support for Steam and games
   
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable.true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+	AutoEnable = true;
+	ControllerMode = "bredr";
+      };
+    }:
+  };
   services.blueman.enable = true;
 
   nix.gc = {

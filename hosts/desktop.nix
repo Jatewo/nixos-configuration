@@ -27,6 +27,9 @@
   hardware.steam-hardware.enable = true; # Enable 32-bit support for Steam and games
   
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   nix.gc = {
     automatic = true; # Enable automatic garbage collection
     dates = "daily"; # Run garbage collection daily

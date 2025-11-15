@@ -35,7 +35,7 @@
 	AutoEnable = true;
 	ControllerMode = "bredr";
       };
-    }:
+    };
   };
   services.blueman.enable = true;
 

@@ -14,7 +14,7 @@
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ]; # Enable DRM kernel mode setting for NVIDIA
   services.xserver.videoDrivers = [ "nvidia" ]; # Use the NVIDIA driver
-
+  
   hardware.nvidia = {
     modesetting.enable = true; # Enable DRM kernel mode setting
     powerManagement.enable = false; # Enable NVIDIA power management
@@ -48,6 +48,12 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Secure Boot with SBCTL
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -84,6 +90,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    sbctl
   ];
 
   nix.extraOptions = ''

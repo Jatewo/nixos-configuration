@@ -5,9 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
     let
       # Define a common function to import nixpkgs and set config
       importPkgs = system: import nixpkgs {
@@ -25,6 +29,7 @@
       # This is the key change. Define nixosConfigurations at the top level.
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
+	  specialArgs = { inherit inputs; };
           system = "x86_64-linux"; # You must specify the system here
           modules = [
             ./hosts/desktop.nix
@@ -41,6 +46,7 @@
 
               home-manager.users.jacobtw = import ./home/jacobtw.nix;
             }
+	    inputs.lanzaboote.nixosModules.lanzaboote
           ];
         };
         # You could add other hosts here, e.g., 'laptop'

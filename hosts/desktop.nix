@@ -46,17 +46,19 @@
   };
 
   # Bootloader
-  boot.loader.systemd-boot.enable = false;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+
 
   # Secure Boot with SBCTL
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
+  #boot.lanzaboote = {
+  #  enable = true;
+  #  pkiBundle = "/etc/secureboot";
+  #};
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -91,6 +93,7 @@
   environment.systemPackages = with pkgs; [
     wget
     sbctl
+    niv
   ];
 
   nix.extraOptions = ''

@@ -7,7 +7,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/bcssov/IronyModManager/releases/download/v${version}/linux-x64.zip";
-      hash = pkgs.lib.fakeHash;
+      hash = "sha256-+W/XaSqTNTwjhq4tPy8tXZBHOQ+u8eEObCYmLgGQ0eo=";
     };
 
     nativeBuildInputs = [ pkgs.unzip ];

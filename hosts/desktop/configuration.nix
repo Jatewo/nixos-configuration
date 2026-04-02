@@ -4,13 +4,13 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/core.nix
-    ../../modules/networking.nix
-    ../../modules/locale_da-dk.nix
-    ../../modules/plasma-desktop.nix
-    ../../modules/gaming.nix
-    ../../modules/sound.nix
-    ../../modules/development.nix
-    ../../modules/secure-boot.nix
+    ../../modules/nixos/networking.nix
+    ../../modules/nixos/locale_da-dk.nix
+    ../../modules/nixos/plasma-desktop.nix
+    ../../modules/nixos/gaming.nix
+    ../../modules/nixos/sound.nix
+    ../../modules/nixos/development.nix
+    ../../modules/nixos/secure-boot.nix
   ];
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ]; # Enable DRM kernel mode setting for NVIDIA

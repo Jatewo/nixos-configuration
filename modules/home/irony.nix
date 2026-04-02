@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  irony-mod-manager = pkgs.stdenv.mkDerivation rec {
-    pname = "irony-mod-manager";
+  irony-pkg = pkgs.stdenv.mkDerivation rec {
+    pname = "irony-mod-manager-pkg";
     version = "1.27.162";
 
     src = pkgs.fetchurl {
@@ -11,21 +11,34 @@ let
     };
 
     nativeBuildInputs = [ pkgs.unzip ];
-
     sourceRoot = ".";
 
     installPhase = ''
-      mkdir -p $out/bin $out/opt/irony-mod-manager
+      mkdir -p $out/opt/irony-mod-manager
       cp -r * $out/opt/irony-mod-manager/
       chmod +x $out/opt/irony-mod-manager/IronyModManager
-      
-      cat > $out/bin/irony-mod-manager <<EOF
-      #!/bin/sh
-      exec ${pkgs.steam-run}/bin/steam-run $out/opt/irony-mod-manager/IronyModManager "\$@"
-      EOF
-      
-      chmod +x $out/bin/irony-mod-manager
     '';
+  };
+
+  irony-mod-manager = pkgs.buildFHSEnv {
+    name = "irony-mod-manager";
+    targetPkgs = pkgs: (with pkgs; [
+      icu
+      openssl
+      zlib
+      fontconfig
+      freetype
+      xorg.libX11
+      xorg.libICE
+      xorg.libSM
+      xorg.libXcursor
+      xorg.libXext
+      xorg.libXi
+      xorg.libXrandr
+      libGL
+      gtk3
+    ]);
+    runScript = "${irony-pkg}/opt/irony-mod-manager/IronyModManager";
   };
 in
 {

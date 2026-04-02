@@ -10,6 +10,7 @@
     ../modules/gaming.nix
     ../modules/sound.nix
     ../modules/development.nix
+    ../modules/secure-boot.nix
   ];
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ]; # Enable DRM kernel mode setting for NVIDIA
@@ -46,17 +47,8 @@
   };
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-
-
-  # Secure Boot with SBCTL
-  #boot.lanzaboote = {
-  #  enable = true;
-  #  pkiBundle = "/etc/secureboot";
-  #};
-
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages;
 

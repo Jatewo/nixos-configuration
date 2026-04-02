@@ -28,6 +28,13 @@
       vim.cmd('SudaWrite')
     end, { desc = 'Write file with sudo' })
 
+    vim.api.nvim_create_user_command('NixRebuild', function()
+      vim.cmd('wa')
+      vim.fn.system({'git', 'add', '.'})
+      vim.cmd('split | term sudo nixos-rebuild switch --flake ~/nixos-config#desktop')
+      vim.cmd('startinsert')
+    end, { desc = 'Save, stage, and rebuild NixOS' })
+
     require("lazy").setup({
       {
         "zbirenbaum/copilot.lua",
@@ -131,6 +138,13 @@
           })
           
           vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+        end,
+      },
+
+      {
+        "tpope/vim-fugitive",
+        config = function()
+          vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
         end,
       },
     })

@@ -5,6 +5,7 @@
     ./git.nix
     ./neovim.nix
     ./shell.nix
+    ./irony.nix
   ];
 
   home.username = "jacobtw";

@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../shared/users.nix
+    ../../modules/nixos/core.nix
     ../../modules/networking.nix
     ../../modules/locale_da-dk.nix
     ../../modules/plasma-desktop.nix

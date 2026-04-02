@@ -10,7 +10,6 @@
   };
 
   xdg.configFile."nvim/init.lua".text = ''
-    -- Bootstrap lazy.nvim plugin manager
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     if not vim.loop.fs_stat(lazypath) then
       vim.fn.system({
@@ -70,17 +69,15 @@
           vim.cmd([[colorscheme tokyonight]])
         end,
       },
+
       {
         "lambdalisue/suda.vim",
         config = function()
           vim.cmd('runtime plugin/suda.vim')
         end,
       },
-    })
-  '';
-}
 
-{
+      {
         "nvim-tree/nvim-tree.lua",
         dependencies = {
           "nvim-tree/nvim-web-devicons",
@@ -102,3 +99,6 @@
           vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
         end,
       },
+    })
+  '';
+}

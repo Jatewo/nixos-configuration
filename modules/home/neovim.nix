@@ -1,18 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "jacobtw";
-  home.homeDirectory = "/home/jacobtw";
-
-  programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    git
-    neofetch
-  ];
+  programs.neovim = {
+    enable = true;
+    withNodeJs = true;
+    viAlias = true;
+    vimAlias = true;
+    extraPackages = with pkgs; [ gcc python3 nodejs ];
+  };
 
   xdg.configFile."nvim/init.lua".text = ''
-  -- Bootstrap lazy.nvim plugin manager
+    -- Bootstrap lazy.nvim plugin manager
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     if not vim.loop.fs_stat(lazypath) then
       vim.fn.system({
@@ -20,7 +18,7 @@
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        "--branch=stable",
         lazypath,
       })
     end
@@ -34,7 +32,6 @@
     require("lazy").setup({
       {
         "zbirenbaum/copilot.lua",
-        -- event = "InsertEnter",
         config = function()
           require("copilot").setup({
             suggestion = {
@@ -65,7 +62,6 @@
         end,
       },
 
-      -- Theme
       {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -76,24 +72,10 @@
       },
       {
         "lambdalisue/suda.vim",
-	config = function()
-	  vim.cmd('runtime plugin/suda.vim')
-	end,
+        config = function()
+          vim.cmd('runtime plugin/suda.vim')
+        end,
       },
     })
   '';
-
-  programs.neovim = {
-    enable = true;
-    withNodeJs = true;
-    viAlias = true;
-    vimAlias = true;
-    extraPackages = with pkgs; [ gcc python3 nodejs ];
-  };
-
-  # Optional
-  programs.git.enable = true;
-  programs.zsh.enable = true;
-
-  home.stateVersion = "24.05"; # Match your system
 }

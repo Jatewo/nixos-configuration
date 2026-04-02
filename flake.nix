@@ -21,7 +21,8 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/desktop.nix
+          ./hosts/desktop/configuration.nix
+	  ./hosts/desktop/hardware-configuration.nix
 
           ({ config, pkgs, lib, ... }: {
             nixpkgs.config.allowUnfree = true;

@@ -78,6 +78,26 @@
       },
 
       {
+        "nvim-tree/nvim-web-devicons",
+        config = function()
+          require("nvim-web-devicons").setup({
+            override = {
+              nix = {
+                icon = "❄",
+                color = "#7ea3cb",
+                name = "Nix"
+              },
+              md = {
+                icon = "📝",
+                color = "#519aba",
+                name = "Markdown"
+              }
+            }
+          })
+        end
+      },
+
+      {
         "nvim-tree/nvim-tree.lua",
         dependencies = {
           "nvim-tree/nvim-web-devicons",
@@ -90,6 +110,20 @@
             },
             renderer = {
               group_empty = true,
+              icons = {
+                glyphs = {
+                  folder = {
+                    arrow_closed = "▶",
+                    arrow_open = "▼",
+                    default = "📁",
+                    open = "📂",
+                    empty = "🗀",
+                    empty_open = "🗁",
+                    symlink = "🔗",
+                    symlink_open = "🔗",
+                  }
+                }
+              }
             },
             filters = {
               dotfiles = false,

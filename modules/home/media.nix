@@ -1,15 +1,18 @@
 { pkgs, ... }:
 
-{
-  home.packages = with pkgs; [
-    pear-desktop
-  ];
-
-  xdg.desktopEntries.pear-desktop = {
-    name = "Pear Desktop";
-    exec = "env PULSE_PROP=\"application.name='Pear Desktop' media.role=music\" pear-desktop %U";
-    icon = "pear-desktop";
-    terminal = false;
-    categories = [ "Audio" "Music" "Player" ];
+let
+  pear-desktop-fixed = pkgs.symlinkJoin {
+    name = "pear-desktop-fixed";
+    paths = [ pkgs.pear-desktop ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/pear-desktop \
+        --set PULSE_PROP "media.name='Pear Desktop'"
+    '';
   };
+in
+{
+  home.packages = [
+    pear-desktop-fixed
+  ];
 }

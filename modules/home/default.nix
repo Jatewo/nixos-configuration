@@ -6,6 +6,7 @@
     ./neovim.nix
     ./shell.nix
     ./irony.nix
+    ./media.nix
   ];
 
   home.username = "jacobtw";

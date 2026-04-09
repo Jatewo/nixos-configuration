@@ -21,11 +21,11 @@
     extraConfig.pipewire-pulse."10-pear-rename" = {
       "pulse.rules" = [
         {
-          matches = [ { "media.name" = "Pear Desktop"; } ];
+          matches = [ { "media.name" = "YouTube Music"; } ];
           actions = {
             update-props = {
               "node.description" = "YouTube Music Desktop Player";
-              "application.name" = "YouTube Music"
+              "application.name" = "YouTube Music";
 	      "application.icon_name" = "pear-desktop";
             };
           };

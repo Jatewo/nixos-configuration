@@ -7,7 +7,9 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/pear-desktop \
-        --set PULSE_PROP "media.name='Pear Desktop'"
+        --set PULSE_PROP "media.name='YouTube Music'"
+        
+	sed -i 's/^Name=.*/Name=YouTube Music/' $out/share/applications/*.desktop
     '';
   };
 in

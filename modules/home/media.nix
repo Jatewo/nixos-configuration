@@ -8,8 +8,6 @@ let
     postBuild = ''
       wrapProgram $out/bin/pear-desktop \
         --set PULSE_PROP "media.name='YouTube Music'"
-        
-	sed -i 's/^Name=.*/Name=YouTube Music/' $out/share/applications/*.desktop
     '';
   };
 in
@@ -17,4 +15,13 @@ in
   home.packages = [
     pear-desktop-fixed
   ];
+
+  xdg.desktopEntries."com.github.th_ch.youtube_music" = {
+    name = "YouTube Music";
+    genericName = "Desktop Music Player";
+    exec = "pear-desktop %U"; 
+    icon = "pear-desktop"; 
+    terminal = false;
+    categories = [ "AudioVideo" "Audio" "Player" ]; 
+  };
 }

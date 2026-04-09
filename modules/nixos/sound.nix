@@ -27,6 +27,7 @@
               "node.description" = "YouTube Music Desktop Player";
               "application.name" = "YouTube Music";
 	      "application.icon_name" = "pear-desktop";
+	      "application.icon-name" = "pear-desktop";
             };
           };
         }
@@ -36,7 +37,8 @@
 	    update-props = {
 	      "node.description" = "Brave Browser";
 	      "application.name" = "Brave";
-	      "application.icon-name" = "brave";
+	      "application.icon_name" = "brave-browser";
+	      "application.icon-name" = "brave-browser";
 	    };
 	  };
 	}

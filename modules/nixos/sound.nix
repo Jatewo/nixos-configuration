@@ -18,12 +18,30 @@
         { cmd = "load-module"; args = "module-suspend-on-idle"; flags = ["nofail"]; }
       ];
     };
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    extraConfig.pipewire-pulse."10-pear-rename" = {
+      "pulse.rules" = [
+        {
+          matches = [ { "media.name" = "Pear Desktop"; } ];
+          actions = {
+            update-props = {
+              "node.description" = "YouTube Music Desktop Player";
+              "application.name" = "YouTube Music"
+	      "application.icon_name" = "pear-desktop";
+            };
+          };
+        }
+	{
+	  matches = [ { "media.name" = "Brave"; } ];
+	  actions = {
+	    update-props = {
+	      "node.description" = "Brave Browser";
+	      "application.name" = "Brave";
+	      "application.icon-name" = "brave";
+	    };
+	  };
+	}
+      ];
+    };
   };
   environment.systemPackages = [ pkgs.headsetcontrol ];
   services.udev.packages = [ pkgs.headsetcontrol ];

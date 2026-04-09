@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 
+
+let
+  brave-fixed = pkgs.symlinkJoin {
+    name = "brave-fixed";
+    paths = [ pkgs.brave ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/brave \
+        --set PULSE_PROP "media.name='Brave'"
+    '';
+  };
+in
 {
    # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -17,9 +29,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    brave
+    brave-fixed
     pkgs.parsec-bin
-    pkgs.ytmdesktop
     pkgs.posy-cursors
   ];
 

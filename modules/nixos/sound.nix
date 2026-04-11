@@ -42,6 +42,17 @@
 	    };
 	  };
 	}
+	{
+	  matches = [ { "media.name" = "Discord"; } ];
+	  actions = {
+	    update-props = {
+	      "node.description" = "Discord";
+	      "application.name" = "Discord";
+	      "application.icon_name" = "/home/jacobtw/Downloads/discord_icon_130958.ico";
+	      "application.icon-name" = "/home/jacobtw/Downloads/discord_icon_130958.ico";
+	    };
+	  };
+        }
       ];
     };
   };

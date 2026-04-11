@@ -22,7 +22,12 @@ in
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.wayland.enable = false;
 
-  
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+  ];
+
+  fonts.fontconfig.enable = true;
 
   xdg.portal = {
     enable = true;

@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
 
-    extraPackages = with pkgs; [ gcc python3 nodejs ];
+    extraPackages = with pkgs; [gcc python3 nodejs alejandra];
 
     opts = {
       clipboard = "unnamedplus";
@@ -50,7 +52,7 @@
     #     };
     #   };
     # };
-    
+
     plugins = {
       copilot-lua = {
         enable = true;
@@ -88,6 +90,20 @@
         };
       };
 
+      conform-nvim = {
+        enable = true;
+        settings = {
+          format_on_save = {
+            lsp_fallback = true;
+            timeout_ms = 500;
+          };
+          formatters_by_ft = {
+            nix = ["alejandra"];
+            # python = [ "ruff" ];
+          };
+        };
+      };
+
       lualine = {
         enable = true;
         settings = {
@@ -98,8 +114,8 @@
             component_separators = "";
           };
           sections = {
-            lualine_a = [ "mode" ];
-            lualine_b = [ 
+            lualine_a = ["mode"];
+            lualine_b = [
               "branch"
               {
                 name = "diff";
@@ -107,7 +123,7 @@
                   function()
                     local file = vim.fn.expand("%")
                     if file == "" then return nil end
-                    
+
                     local handle = io.popen("git diff --shortstat HEAD -- " .. file .. " 2>/dev/null")
                     if not handle then return nil end
                     local result = handle:read("*a")
@@ -118,26 +134,27 @@
                     -- Parse the git output (e.g., " 1 file changed, 2 insertions(+), 1 deletion(-)")
                     local added = result:match("(%d+) insertion") or 0
                     local removed = result:match("(%d+) deletion") or 0
-                    
+
                     return {
                       added = tonumber(added),
                       modified = 0, -- Git shortstat treats "changes" as an addition + deletion
                       removed = tonumber(removed)
                     }
                   end
-                '';               symbols = {
+                '';
+                symbols = {
                   added = " ";
                   modified = " ";
                   removed = " ";
                 };
               }
             ];
-            lualine_c = [ 
+            lualine_c = [
               "filename"
               {
                 name = "diagnostics";
-                sources = [ "nvim_lsp" ];
-                sections = [ "error" "warn" "info" "hint" ];
+                sources = ["nvim_lsp"];
+                sections = ["error" "warn" "info" "hint"];
                 symbols = {
                   error = " ";
                   warn = " ";
@@ -164,8 +181,8 @@
               "encoding"
               "filetype"
             ];
-            lualine_y = [ "progress" ];
-            lualine_z = [ "location" ];
+            lualine_y = ["progress"];
+            lualine_z = ["location"];
           };
         };
       };
@@ -193,35 +210,35 @@
 
       nvim-tree = {
         enable = true;
-	    settings = {
-	      sort_by = "case_sensitive";
-	        view = {
-              width = 30;
-            };
-            filters = {
-              dotfiles = false;
-            };
-            renderer = {
-              group_empty = true;
-              icons = {
-                glyphs = {
-                  folder = {
-                    arrow_closed = "▶";
-                    arrow_open = "▼";
-                    default = "📁";
-                    open = "📂";
-                    empty = "🗀";
-                    empty_open = "🗁";
-                    symlink = "🔗";
-                    symlink_open = "🔗";
-                  };
-	            git = {
+        settings = {
+          sort_by = "case_sensitive";
+          view = {
+            width = 30;
+          };
+          filters = {
+            dotfiles = false;
+          };
+          renderer = {
+            group_empty = true;
+            icons = {
+              glyphs = {
+                folder = {
+                  arrow_closed = "▶";
+                  arrow_open = "▼";
+                  default = "📁";
+                  open = "📂";
+                  empty = "🗀";
+                  empty_open = "🗁";
+                  symlink = "🔗";
+                  symlink_open = "🔗";
+                };
+                git = {
                   unstaged = "✗";
                   staged = "✓";
                   untracked = "★";
                   deleted = "⊖";
                   ignored = "◌";
-	            };
+                };
               };
             };
           };

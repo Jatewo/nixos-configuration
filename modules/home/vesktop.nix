@@ -8,8 +8,6 @@ let
     postBuild = ''
       wrapProgram $out/bin/vesktop \
         --set PULSE_PROP "media.name='Discord'" \
-
-      rm -f $out/share/applications/vesktop.desktop
     '';
   };
 in
@@ -22,7 +20,7 @@ in
     name = "Discord";
     genericName = "Chat and Voice Communication (Vesktop)";
     exec = "vesktop %U"; 
-    icon = "/home/jacobtw/Downloads/discord_icon_130958.ico"; 
+    icon = "discord"; 
     terminal = false;
     categories = [ "AudioVideo" "Audio" "Player" ]; 
   };

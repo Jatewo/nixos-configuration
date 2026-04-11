@@ -11,6 +11,18 @@
 
     opts = {
       clipboard = "unnamedplus";
+      shiftwidth = 2;
+      tabstop = 2;
+      softtabstop = 2;
+      expandtab = true;
+    };
+
+    files = {
+      "ftplugin/python.lua".opts = {
+        shiftwidth = 4;
+        tabstop = 4;
+        softtabstop = 4;
+      };
     };
 
     colorschemes.tokyonight.enable = true;
@@ -18,18 +30,23 @@
     plugins = {
       copilot-lua = {
         enable = true;
-        panel = {
-          enabled = false;
-        };
-        suggestion = {
-          enabled = true;
-          autoTrigger = true;
-          keymap = {
-            accept = "<Tab>";
-            acceptWord = false;
-            acceptLine = false;
-            next = "<C-k>";
-            prev = "<C-j>";
+        settings = {
+          filetypes = {
+            "*" = true;
+          };
+          panel = {
+            enabled = false;
+          };
+          suggestion = {
+            enabled = true;
+            auto_trigger = true;
+            keymap = {
+              accept = "<Tab>";
+              accept_word = false;
+              accept_line = false;
+              next = "<C-k>";
+              prev = "<C-j>";
+            };
           };
         };
       };
@@ -57,35 +74,35 @@
 
       nvim-tree = {
         enable = true;
-	settings = {
-	  sort_by = "case_sensitive";
-	  view = {
-            width = 30;
-          };
-          filters = {
-            dotfiles = false;
-          };
-          renderer = {
-            group_empty = true;
-            icons = {
-              glyphs = {
-                folder = {
-                  arrow_closed = "▶";
-                  arrow_open = "▼";
-                  default = "📁";
-                  open = "📂";
-                  empty = "🗀";
-                  empty_open = "🗁";
-                  symlink = "🔗";
-                  symlink_open = "🔗";
-                };
-	        git = {
+	    settings = {
+	      sort_by = "case_sensitive";
+	        view = {
+              width = 30;
+            };
+            filters = {
+              dotfiles = false;
+            };
+            renderer = {
+              group_empty = true;
+              icons = {
+                glyphs = {
+                  folder = {
+                    arrow_closed = "▶";
+                    arrow_open = "▼";
+                    default = "📁";
+                    open = "📂";
+                    empty = "🗀";
+                    empty_open = "🗁";
+                    symlink = "🔗";
+                    symlink_open = "🔗";
+                  };
+	            git = {
                   unstaged = "✗";
                   staged = "✓";
                   untracked = "★";
                   deleted = "⊖";
                   ignored = "◌";
-	        };
+	            };
               };
             };
           };

@@ -9,6 +9,7 @@
     ./irony.nix
     ./media.nix
     ./vesktop.nix
+    ./kitty.nix
   ];
 
   home.username = "jacobtw";

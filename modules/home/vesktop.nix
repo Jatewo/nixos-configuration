@@ -8,6 +8,8 @@ let
     postBuild = ''
       wrapProgram $out/bin/vesktop \
         --set PULSE_PROP "media.name='Discord'" \
+
+      rm -f $out/share/applications/vesktop.desktop
     '';
   };
 in

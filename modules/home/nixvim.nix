@@ -52,18 +52,6 @@
       web-devicons = {
         enable = true;
         settings = {
-          override = {
-            nix = {
-              icon = "❄";
-              color = "#7ea3cb";
-              name = "Nix";
-            };
-            md = {
-              icon = "📝";
-              color = "#519aba";
-              name = "Markdown";
-            };
-          };
         };
       };
 

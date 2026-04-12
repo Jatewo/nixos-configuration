@@ -8,5 +8,6 @@
     ./ui-plugins.nix
     ./diagnostics.nix
     ./lsp.nix
+    ./which-key.nix
   ];
 }

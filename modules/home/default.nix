@@ -1,10 +1,13 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./git.nix
-    ./nixvim.nix
+    ./nixvim
     ./shell.nix
     ./irony.nix
     ./media.nix
@@ -16,5 +19,5 @@
   home.homeDirectory = "/home/jacobtw";
   home.stateVersion = "24.05";
 
-  programs.home-manager.enable = true; 
+  programs.home-manager.enable = true;
 }

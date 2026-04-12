@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   irony-pkg = pkgs.stdenv.mkDerivation rec {
     pname = "irony-mod-manager-pkg";
     version = "1.27.162";
@@ -10,7 +12,7 @@ let
       hash = "sha256-+W/XaSqTNTwjhq4tPy8tXZBHOQ+u8eEObCYmLgGQ0eo=";
     };
 
-    nativeBuildInputs = [ pkgs.unzip ];
+    nativeBuildInputs = [pkgs.unzip];
     sourceRoot = ".";
 
     installPhase = ''
@@ -28,20 +30,19 @@ let
       zlib
       fontconfig
       freetype
-      xorg.libX11
-      xorg.libICE
-      xorg.libSM
-      xorg.libXcursor
-      xorg.libXext
-      xorg.libXi
-      xorg.libXrandr
+      libx11
+      libice
+      libsm
+      libxcursor
+      libxext
+      libxi
+      libxrandr
       libGL
       gtk3
     ]);
     runScript = "${irony-pkg}/opt/irony-mod-manager/IronyModManager";
   };
-in
-{
+in {
   home.packages = [
     irony-mod-manager
   ];
@@ -50,6 +51,6 @@ in
     name = "Irony Mod Manager";
     exec = "irony-mod-manager";
     terminal = false;
-    categories = [ "Game" "Utility" ];
+    categories = ["Game" "Utility"];
   };
 }

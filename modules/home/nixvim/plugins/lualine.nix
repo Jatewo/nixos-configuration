@@ -13,7 +13,7 @@
         lualine_b = [
           "branch"
           {
-            name = "diff";
+            __unkeyed = "diff";
             source.__raw = ''
               function()
                 local file = vim.fn.expand("%")
@@ -26,13 +26,12 @@
 
                 if result == "" then return nil end
 
-                -- Parse the git output (e.g., " 1 file changed, 2 insertions(+), 1 deletion(-)")
                 local added = result:match("(%d+) insertion") or 0
                 local removed = result:match("(%d+) deletion") or 0
 
                 return {
                   added = tonumber(added),
-                  modified = 0, -- Git shortstat treats "changes" as an addition + deletion
+                  modified = 0,
                   removed = tonumber(removed)
                 }
               end
@@ -47,7 +46,7 @@
         lualine_c = [
           "filename"
           {
-            name = "diagnostics";
+            __unkeyed = "diagnostics";
             sources = ["nvim_lsp"];
             sections = ["error" "warn" "info" "hint"];
             symbols = {
@@ -59,9 +58,8 @@
           }
         ];
         lualine_x = [
-          # This displays "Spaces: 2" or "Tabs: 4"
           {
-            name.__raw = ''
+            __unkeyed.__raw = ''
               function()
                 local expandtab = vim.api.nvim_get_option_value("expandtab", { scope = "local" })
                 local size = vim.api.nvim_get_option_value("shiftwidth", { scope = "local" })

@@ -21,5 +21,18 @@
     NvimTreeEndOfBuffer.bg = "none";
     NormalFloat.bg = "none";
     FloatBorder.bg = "none";
+
+    DiagnosticUnderlineWarn = {
+      undercurl = true;
+      sp = "#e0af68";
+    };
+    DiagnosticUnderlineInfo = {
+      undercurl = true;
+      sp = "#0db9d7";
+    };
+    DiagnosticUnderlineHint = {
+      undercurl = true;
+      sp = "#1abc9c";
+    };
   };
 }

@@ -6,5 +6,7 @@
     ./formatting.nix
     ./treesitter.nix
     ./ui-plugins.nix
+    ./diagnostics.nix
+    ./lsp.nix
   ];
 }

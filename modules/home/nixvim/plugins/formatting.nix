@@ -8,7 +8,7 @@
       };
       formatters_by_ft = {
         nix = ["alejandra"];
-        # python = [ "ruff" ];
+        python = ["ruff"];
       };
     };
   };

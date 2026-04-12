@@ -1,6 +1,12 @@
 {
+  globals = {
+    mapleader = " ";
+    maplocalleader = " ";
+  };
+
   opts = {
     clipboard = "unnamedplus";
+    termguicolors = true;
     shiftwidth = 2;
     tabstop = 2;
     softtabstop = 2;
@@ -21,7 +27,7 @@
     {
       mode = "n";
       key = "<C-n>";
-      action = "<cmd>NvimTreeToggle<CR>";
+      action = "<cmd>Neotree toggle<CR>";
       options.silent = true;
     }
     {

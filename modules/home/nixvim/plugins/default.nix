@@ -9,5 +9,12 @@
     ./diagnostics.nix
     ./lsp.nix
     ./which-key.nix
+    ./telescope.nix
+    ./neo-tree.nix
+    ./bufferline.nix
   ];
+
+  plugins.comment = {
+    enable = true;
+  };
 }

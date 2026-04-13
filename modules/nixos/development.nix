@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh.enable = true;
 
   programs.neovim.enable = true;
@@ -11,5 +12,6 @@
     git
     wl-clipboard
     xclip
+    rar
   ];
 }

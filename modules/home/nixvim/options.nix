@@ -6,6 +6,7 @@
 
   opts = {
     clipboard = "unnamedplus";
+    showmode = false;
     termguicolors = true;
     shiftwidth = 2;
     tabstop = 2;

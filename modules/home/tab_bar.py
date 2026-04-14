@@ -156,10 +156,10 @@ def get_session(max_size: int, tab: TabBarData) -> str | None:
     else:
         return None
 
-def get_tab_cell(tab: TabBarData) -> Cell:
+def get_tab_cell(tab: TabBarData, index: int) -> Cell:
     color = COLOR_TAB_ACTIVE if tab.is_active else COLOR_TAB_INACTIVE
     number_color = BG if tab.is_active else FG
-    return Cell(str(tab.tab_id), get_tab, tab, color=color, icon_color=number_color)
+    return Cell(str(index), get_tab, tab, color=color, icon_color=number_color)
 
 
 def redraw_tab_bar(_):
@@ -272,7 +272,7 @@ def draw_tab(
     if tab.is_active:
         active_index = index - 1
 
-    center.append(get_tab_cell(tab))
+    center.append(get_tab_cell(tab, index))
 
     # Draw everything on the last tab
     if is_last:

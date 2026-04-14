@@ -28,5 +28,5 @@
     };
   };
 
-  xdg.configFile."kitty/tab_bar.py".source = ./tab_bar_test.py;
+  xdg.configFile."kitty/tab_bar.py".source = ./tab_bar.py;
 }

@@ -7,10 +7,10 @@
     };
 
     settings = {
-      background_opacity = "0.8";
+      background_opacity = "0.6";
       dynamic_background_opacity = true;
       window_padding_width = 5;
-      background_blur = 5;
+      background_blur = 2;
       enable_audio_bell = false;
       confirm_os_window_close = 0;
       tab_bar_style = "custom";

@@ -12,4 +12,13 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<C-n>";
+      action = "<cmd>Neotree toggle<CR>";
+      options.silent = true;
+    }
+  ];
 }

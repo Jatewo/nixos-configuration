@@ -16,7 +16,12 @@
         {
           __unkeyed-1 = "<leader>g";
           group = "Git";
-          icon = " ";
+          icon = "󰊢 ";
+        }
+        {
+          __unkeyed-1 = "<leader>s";
+          group = "Split/Search";
+          icon = " ";
         }
       ];
     };

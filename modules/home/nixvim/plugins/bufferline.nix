@@ -32,31 +32,6 @@
     };
   };
 
-  # Navigation Keymaps (Put these in your keymaps list)
-  keymaps = [
-    # Shift + l to move to the next tab (right)
-    {
-      mode = "n";
-      key = "<S-l>";
-      action = "<cmd>BufferLineCycleNext<cr>";
-      options.desc = "Next Tab";
-    }
-    # Shift + h to move to the previous tab (left)
-    {
-      mode = "n";
-      key = "<S-h>";
-      action = "<cmd>BufferLineCyclePrev<cr>";
-      options.desc = "Previous Tab";
-    }
-    # Shift + x to close the current file tab
-    {
-      mode = "n";
-      key = "<S-x>";
-      action = "<cmd>lua MiniBufremove.delete(0, false)<cr>";
-      options.desc = "Close Buffer (Preserve Layout)";
-    }
-  ];
-
   plugins.mini = {
     enable = true;
     modules = {

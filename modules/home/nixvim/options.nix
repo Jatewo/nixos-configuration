@@ -1,4 +1,7 @@
-{
+let
+  moveDownAction = "<cmd>m .+1<cr>";
+  moveUpAction = "<cmd>m .-2<cr>";
+in {
   globals = {
     mapleader = " ";
     maplocalleader = " ";
@@ -35,6 +38,70 @@
       mode = "n";
       key = "<leader>gs";
       action = "<cmd>LazyGit<CR>";
+    }
+
+    # Window Navigation (Control + h/j/k/l)
+    {
+      mode = "n";
+      key = "<C-h>";
+      action = "<C-w>h";
+      options.desc = "Go to Left Window";
+    }
+    {
+      mode = "n";
+      key = "<C-j>";
+      action = "<C-w>j";
+      options.desc = "Go to Lower Window";
+    }
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "<C-w>k";
+      options.desc = "Go to Upper Window";
+    }
+    {
+      mode = "n";
+      key = "<C-l>";
+      action = "<C-w>l";
+      options.desc = "Go to Right Window";
+    }
+
+    # Move Lines (Alt + j/k)
+    {
+      mode = "n";
+      key = "<A-j>";
+      action = moveDownAction;
+      options.desc = "Move Line Down";
+    }
+    {
+      mode = "n";
+      key = "<A-Down>";
+      action = moveDownAction;
+      options.desc = "Move Line Down";
+    }
+    {
+      mode = "n";
+      key = "<A-k>";
+      action = moveUpAction;
+      options.desc = "Move Line Up";
+    }
+    {
+      mode = "n";
+      key = "<A-Up>";
+      action = moveUpAction;
+      options.desc = "Move Line Up";
+    }
+    {
+      mode = "v";
+      key = "<A-j>";
+      action = ":m '>+1<cr>gv=gv";
+      options.desc = "Move Selection Down";
+    }
+    {
+      mode = "v";
+      key = "<A-k>";
+      action = ":m '<-2<cr>gv=gv";
+      options.desc = "Move Selection Up";
     }
   ];
 }

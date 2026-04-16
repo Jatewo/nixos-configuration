@@ -1,12 +1,22 @@
-from enum import Enum
-from typing import Callable
-from kitty.fast_data_types import Screen, add_timer, get_boss, get_options # type: ignore
-from kitty.tab_bar import ( # type: ignore
-    DrawData, TabBarData, ExtraData, TabAccessor, as_rgb
-)
-import os
 import datetime
+import os
+from enum import Enum
 from pathlib import Path
+from typing import Callable
+
+from kitty.fast_data_types import (  # type: ignore
+    Screen,
+    add_timer,
+    get_boss,
+    get_options,
+)
+from kitty.tab_bar import (  # type: ignore
+    DrawData,
+    ExtraData,
+    TabAccessor,
+    TabBarData,
+    as_rgb,
+)
 
 opts = get_options()
 

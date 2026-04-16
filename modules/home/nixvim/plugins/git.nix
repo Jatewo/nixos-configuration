@@ -14,12 +14,6 @@
     };
 
     fugitive.enable = true;
-
-    neogit = {
-      enable = true;
-      settings = {
-        kind = "auto";
-      };
-    };
+    lazygit.enable = true;
   };
 }

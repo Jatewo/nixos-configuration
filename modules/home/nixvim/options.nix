@@ -34,7 +34,7 @@
     {
       mode = "n";
       key = "<leader>gs";
-      action = "<cmd>Neogit<CR>";
+      action = "<cmd>LazyGit<CR>";
     }
   ];
 }

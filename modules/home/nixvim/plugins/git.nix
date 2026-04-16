@@ -21,7 +21,7 @@
     {
       mode = "n";
       key = "<leader>gs";
-      action = "<cmd>LazyGit<CR>";
+      action = "<cmd>LazyGit<CR><cmd>lua require('neo-tree.sources.manager').refresh('filesystem')<CR>";
     }
   ];
 }

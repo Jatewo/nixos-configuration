@@ -1,6 +1,23 @@
-let
-  moveDownAction = "<cmd>m .+1<cr>";
-  moveUpAction = "<cmd>m .-2<cr>";
+{lib, ...}: let
+  nMoveDown = "<cmd>m .+1<cr>==";
+  nMoveUp = "<cmd>m .-2<cr>==";
+
+  vMoveDown = ":m '>+1<cr>gv=gv";
+  vMoveUp = ":m '<-2<cr>gv=gv";
+
+  downKeys = ["Down" "j"];
+  upKeys = ["Up" "k"];
+  rightKeys = ["Right" "l"];
+  leftKeys = ["Left" "h"];
+
+  nextAction = "<cmd>BufferLineCycleNext<cr>";
+  prevAction = "<cmd>BufferLineCyclePrev<cr>";
+
+  mkKeymap = mode: prefix: action: desc: key: {
+    inherit mode action;
+    key = "<${prefix}-${key}>"; # String interpolation is the magic here
+    options.desc = desc;
+  };
 in {
   globals = {
     mapleader = " ";
@@ -20,39 +37,19 @@ in {
   };
 
   # Per-language overrides
-  files."ftplugin/python.lua".opts = {
+  files."ftplugin/pythonl.lua".opts = {
     shiftwidth = 4;
     tabstop = 4;
     softtabstop = 4;
   };
 
   # Global Keymaps
-  keymaps = [
+  keymaps = lib.flatten [
     # --- Window Navigation (Control + h/j/k/l) ---
-    {
-      mode = "n";
-      key = "<C-h>";
-      action = "<C-w>h";
-      options.desc = "Go to Left Window";
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<C-w>j";
-      options.desc = "Go to Lower Window";
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-w>k";
-      options.desc = "Go to Upper Window";
-    }
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-w>l";
-      options.desc = "Go to Right Window";
-    }
+    (map (mkKeymap "n" "C" "<C-w>h" "Go Left") leftKeys)
+    (map (mkKeymap "n" "C" "<C-w>j" "Go Down") downKeys)
+    (map (mkKeymap "n" "C" "<C-w>k" "Go Up") upKeys)
+    (map (mkKeymap "n" "C" "<C-w>l" "Go Right") rightKeys)
 
     # --- Windows Split (Ctrl + v/s) ---
     {
@@ -68,72 +65,16 @@ in {
       options.desc = "Split Horizontally";
     }
 
-    # --- Move Lines (Alt + j/k) ---
-    {
-      mode = "n";
-      key = "<A-j>";
-      action = "<cmd>m .+1<cr>";
-      options.desc = "Move Line Down";
-    }
-    {
-      mode = "n";
-      key = "<A-k>";
-      action = "<cmd>m .-2<cr>";
-      options.desc = "Move Line Up";
-    }
-    {
-      mode = "v";
-      key = "<A-j>";
-      action = ":m '>+1<cr>gv=gv";
-      options.desc = "Move Selection Down";
-    }
-    {
-      mode = "v";
-      key = "<A-k>";
-      action = ":m '<-2<cr>gv=gv";
-      options.desc = "Move Selection Up";
-    }
+    # --- Move Lines (Alt + j/k or Down/Up) ---
+    (map (mkKeymap "n" "A" nMoveDown "Move Line Down") downKeys)
+    (map (mkKeymap "n" "A" nMoveUp "Move Line Up") upKeys)
 
-    # --- Move Lines (Alt + Arrows) ---
-    # These point to the exact same actions as above
-    {
-      mode = "n";
-      key = "<A-Down>";
-      action = "<cmd>m .+1<cr>";
-      options.desc = "Move Line Down";
-    }
-    {
-      mode = "n";
-      key = "<A-Up>";
-      action = "<cmd>m .-2<cr>";
-      options.desc = "Move Line Up";
-    }
-    {
-      mode = "v";
-      key = "<A-Down>";
-      action = ":m '>+1<cr>gv=gv";
-      options.desc = "Move Selection Down";
-    }
-    {
-      mode = "v";
-      key = "<A-Up>";
-      action = ":m '<-2<cr>gv=gv";
-      options.desc = "Move Selection Up";
-    }
+    (map (mkKeymap "v" "A" vMoveDown "Move Selection Down") downKeys)
+    (map (mkKeymap "v" "A" vMoveUp "Move Selection Up") upKeys)
 
     # --- Buffer Management (Tabs) ---
-    {
-      mode = "n";
-      key = "<S-l>";
-      action = "<cmd>BufferLineCycleNext<cr>";
-      options.desc = "Next Tab";
-    }
-    {
-      mode = "n";
-      key = "<S-h>";
-      action = "<cmd>BufferLineCyclePrev<cr>";
-      options.desc = "Previous Tab";
-    }
+    (map (mkKeymap "n" "S" nextAction "Next Tab") rightKeys)
+    (map (mkKeymap "n" "S" prevAction "Previous Tab") leftKeys)
     {
       mode = "n";
       key = "<S-x>";

@@ -6,6 +6,8 @@
       };
     };
 
+    dressing.enable = true;
+
     alpha = {
       enable = true;
       theme = "dashboard";

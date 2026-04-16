@@ -28,19 +28,7 @@ in {
 
   # Global Keymaps
   keymaps = [
-    {
-      mode = "n";
-      key = "<C-n>";
-      action = "<cmd>Neotree toggle<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>gs";
-      action = "<cmd>LazyGit<CR>";
-    }
-
-    # Window Navigation (Control + h/j/k/l)
+    # --- Window Navigation (Control + h/j/k/l) ---
     {
       mode = "n";
       key = "<C-h>";
@@ -66,29 +54,31 @@ in {
       options.desc = "Go to Right Window";
     }
 
-    # Move Lines (Alt + j/k)
+    # --- Windows Split (Ctrl + v/s) ---
     {
       mode = "n";
-      key = "<A-j>";
-      action = moveDownAction;
-      options.desc = "Move Line Down";
+      key = "<leader>sv";
+      action = "<C-w>v";
+      options.desc = "Split Vertically";
     }
     {
       mode = "n";
-      key = "<A-Down>";
-      action = moveDownAction;
+      key = "<leader>sh";
+      action = "<C-w>s";
+      options.desc = "Split Horizontally";
+    }
+
+    # --- Move Lines (Alt + j/k) ---
+    {
+      mode = "n";
+      key = "<A-j>";
+      action = "<cmd>m .+1<cr>";
       options.desc = "Move Line Down";
     }
     {
       mode = "n";
       key = "<A-k>";
-      action = moveUpAction;
-      options.desc = "Move Line Up";
-    }
-    {
-      mode = "n";
-      key = "<A-Up>";
-      action = moveUpAction;
+      action = "<cmd>m .-2<cr>";
       options.desc = "Move Line Up";
     }
     {
@@ -102,6 +92,53 @@ in {
       key = "<A-k>";
       action = ":m '<-2<cr>gv=gv";
       options.desc = "Move Selection Up";
+    }
+
+    # --- Move Lines (Alt + Arrows) ---
+    # These point to the exact same actions as above
+    {
+      mode = "n";
+      key = "<A-Down>";
+      action = "<cmd>m .+1<cr>";
+      options.desc = "Move Line Down";
+    }
+    {
+      mode = "n";
+      key = "<A-Up>";
+      action = "<cmd>m .-2<cr>";
+      options.desc = "Move Line Up";
+    }
+    {
+      mode = "v";
+      key = "<A-Down>";
+      action = ":m '>+1<cr>gv=gv";
+      options.desc = "Move Selection Down";
+    }
+    {
+      mode = "v";
+      key = "<A-Up>";
+      action = ":m '<-2<cr>gv=gv";
+      options.desc = "Move Selection Up";
+    }
+
+    # --- Buffer Management (Tabs) ---
+    {
+      mode = "n";
+      key = "<S-l>";
+      action = "<cmd>BufferLineCycleNext<cr>";
+      options.desc = "Next Tab";
+    }
+    {
+      mode = "n";
+      key = "<S-h>";
+      action = "<cmd>BufferLineCyclePrev<cr>";
+      options.desc = "Previous Tab";
+    }
+    {
+      mode = "n";
+      key = "<S-x>";
+      action = "<cmd>lua MiniBufremove.delete(0, false)<cr>";
+      options.desc = "Close Buffer (Preserve Layout)";
     }
   ];
 }

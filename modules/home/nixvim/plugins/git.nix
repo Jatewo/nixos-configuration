@@ -16,4 +16,12 @@
     fugitive.enable = true;
     lazygit.enable = true;
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>gs";
+      action = "<cmd>LazyGit<CR>";
+    }
+  ];
 }

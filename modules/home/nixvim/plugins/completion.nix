@@ -6,14 +6,12 @@
         completion = {
           autocomplete = false;
         };
-
         autoEnableSources = true;
         sources = [
           {name = "nvim_lsp";}
           {name = "path";}
           {name = "buffer";}
         ];
-
         mapping = {
           "<C-Space>" = "cmp.mapping(cmp.mapping.complete(), { 'i', 's' })";
           "<C-@>" = "cmp.mapping(cmp.mapping.complete(), { 'i', 's' })";
@@ -21,13 +19,11 @@
           "<Tab>" = ''
             function(fallback)
               local cmp = require('cmp')
-              local copilot = require('copilot.suggestion')
 
               if cmp.visible() then
                 cmp.select_next_item()
-              elseif copilot.is_visible() then
-                copilot.accept()
               else
+                -- If the completion menu is closed, fallback lets Supermaven intercept the Tab key
                 fallback()
               end
             end
@@ -52,16 +48,9 @@
     cmp-path.enable = true;
     cmp-buffer.enable = true;
 
-    copilot-lua = {
+    # Enable Supermaven to replace Copilot
+    supermaven = {
       enable = true;
-      settings = {
-        panel.enabled = false;
-        suggestion = {
-          enabled = true;
-          auto_trigger = true;
-          keymap.accept = false;
-        };
-      };
     };
   };
 }

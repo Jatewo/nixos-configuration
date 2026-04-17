@@ -1,14 +1,12 @@
-{ config, pkgs, ... }:
-
-{
+{...}: {
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
-  
+
   time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
+  # We use English (US) as the default language, but Danish (DK) for regional formats.
   i18n.defaultLocale = "en_DK.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "da_DK.UTF-8";
     LC_IDENTIFICATION = "da_DK.UTF-8";
@@ -29,5 +27,4 @@
 
   # Configure console keymap
   console.keyMap = "dk-latin1";
-
 }

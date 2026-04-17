@@ -4,6 +4,10 @@
     settings = {
       closeIfLastWindow = true;
 
+      filesystem = {
+        use_libuv_file_watcher = true;
+      };
+
       window.mappings = {
         # Use Space/Enter to open, or 'v'/'s' for splits
         "<space>" = "open";

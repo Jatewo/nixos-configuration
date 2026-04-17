@@ -13,6 +13,7 @@
     ./media.nix
     ./vesktop.nix
     ./kitty.nix
+    ./gaming.nix
   ];
 
   home.username = "jacobtw";

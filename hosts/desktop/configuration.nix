@@ -8,7 +8,7 @@
     ../../modules/nixos/core.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/i18n.nix
-    ../../modules/nixos/plasma-desktop.nix
+    ../../modules/nixos/plasma.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/development.nix

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/core.nix
@@ -11,30 +13,30 @@
     ../../modules/nixos/sound.nix
     ../../modules/nixos/development.nix
     ../../modules/nixos/secure-boot.nix
+    ../../modules/nixos/video.nix
   ];
 
-  boot.kernelParams = [ "nvidia-drm.modeset=1" ]; # Enable DRM kernel mode setting for NVIDIA
-  services.xserver.videoDrivers = [ "nvidia" ]; # Use the NVIDIA driver
-  
+  boot.kernelParams = ["nvidia-drm.modeset=1"]; # Enable DRM kernel mode setting for NVIDIA
+  services.xserver.videoDrivers = ["nvidia"]; # Use the NVIDIA driver
+
   hardware.nvidia = {
     modesetting.enable = true; # Enable DRM kernel mode setting
     powerManagement.enable = false; # Enable NVIDIA power management
     open = true; # Enable NVIDIA Open GPU kernel module
     nvidiaSettings = true; # Enable nvidia-settings utility
     package = config.boot.kernelPackages.nvidiaPackages.stable; # Use the stable NVIDIA driver package
-  }; 
+  };
 
   hardware.graphics.enable32Bit = true; # Enable 32-bit support for graphics drivers
   hardware.steam-hardware.enable = true; # Enable 32-bit support for Steam and games
-  
 
   hardware.bluetooth = {
     enable = true;
     settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
-	AutoEnable = true;
-	ControllerMode = "bredr";
+        AutoEnable = true;
+        ControllerMode = "bredr";
       };
     };
   };
@@ -48,7 +50,7 @@
 
   # Bootloader
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages;
 
@@ -69,12 +71,12 @@
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/443D-A611";
     fsType = "exfat";
-    options = [ "uid=1000" "gid=100" "dmask=0000" "fmask=0111" "nofail" ];
+    options = ["uid=1000" "gid=100" "dmask=0000" "fmask=0111" "nofail"];
   };
 
   fileSystems."/home/jacobtw/.steam/steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" = {
     device = "/mnt/shared/OneDrive/Dokumenter/Sports Interactive/Football Manager 2024";
-    options = [ "bind" ];
+    options = ["bind"];
   };
 
   # Enable CUPS to print documents.

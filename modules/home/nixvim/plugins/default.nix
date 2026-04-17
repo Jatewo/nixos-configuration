@@ -12,6 +12,7 @@
     ./telescope.nix
     ./neo-tree.nix
     ./bufferline.nix
+    ./noice.nix
   ];
 
   plugins.comment = {

@@ -14,6 +14,9 @@
     ./vesktop.nix
     ./kitty.nix
     ./gaming.nix
+    ./brave.nix
+    ./parsec.nix
+    ./posy-cursor.nix
   ];
 
   home.username = "jacobtw";

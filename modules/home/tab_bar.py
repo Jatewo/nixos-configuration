@@ -136,7 +136,7 @@ def get_wd(max_size: int, tab: TabBarData):
 
     return None
 
-def get_time(max_size: int, tab: TabBarData) -> str | None:
+def get_time(max_size: int, _: TabBarData) -> str | None:
     if max_size < 5:
         return None
     else:
@@ -273,6 +273,7 @@ def draw_tab(
     is_last: bool,
     extra_data: ExtraData,
 ) -> int:
+    _ = (draw_data, before, max_title_length, extra_data)
     global center
     global timer_id
     global active_index

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -15,47 +17,51 @@
     pulse.enable = true;
     extraConfig.pipewire-pulse."10-disable-suspend" = {
       "pulse.cmd" = [
-        { cmd = "load-module"; args = "module-suspend-on-idle"; flags = ["nofail"]; }
+        {
+          cmd = "load-module";
+          args = "module-suspend-on-idle";
+          flags = ["nofail"];
+        }
       ];
     };
     extraConfig.pipewire-pulse."10-pear-rename" = {
       "pulse.rules" = [
         {
-          matches = [ { "media.name" = "YouTube Music"; } ];
+          matches = [{"media.name" = "YouTube Music";}];
           actions = {
             update-props = {
               "node.description" = "YouTube Music Desktop Player";
               "application.name" = "YouTube Music";
-	      "application.icon_name" = "pear-desktop";
-	      "application.icon-name" = "pear-desktop";
+              "application.icon_name" = "pear-desktop";
+              "application.icon-name" = "pear-desktop";
             };
           };
         }
-	{
-	  matches = [ { "media.name" = "Brave"; } ];
-	  actions = {
-	    update-props = {
-	      "node.description" = "Brave Browser";
-	      "application.name" = "Brave";
-	      "application.icon_name" = "brave-browser";
-	      "application.icon-name" = "brave-browser";
-	    };
-	  };
-	}
-	{
-	  matches = [ { "media.name" = "Discord"; } ];
-	  actions = {
-	    update-props = {
-	      "node.description" = "Discord";
-	      "application.name" = "Discord";
-	      "application.icon_name" = "discord";
-	      "application.icon-name" = "discord";
-	    };
-	  };
+        {
+          matches = [{"media.name" = "Brave";}];
+          actions = {
+            update-props = {
+              "node.description" = "Brave Browser";
+              "application.name" = "Brave";
+              "application.icon_name" = "brave-browser";
+              "application.icon-name" = "brave-browser";
+            };
+          };
+        }
+        {
+          matches = [{"media.name" = "Discord";}];
+          actions = {
+            update-props = {
+              "node.description" = "Discord";
+              "application.name" = "Discord";
+              "application.icon_name" = "discord";
+              "application.icon-name" = "discord";
+            };
+          };
         }
       ];
     };
   };
-  environment.systemPackages = [ pkgs.headsetcontrol ];
-  services.udev.packages = [ pkgs.headsetcontrol ];
+  environment.systemPackages = [pkgs.headsetcontrol];
+  services.udev.packages = [pkgs.headsetcontrol];
 }

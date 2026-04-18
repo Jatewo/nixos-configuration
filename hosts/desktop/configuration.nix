@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/core.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/i18n.nix
     ../../modules/nixos/plasma.nix
@@ -18,6 +17,10 @@
 
   boot.kernelParams = ["nvidia-drm.modeset=1"]; # Enable DRM kernel mode setting for NVIDIA
   services.xserver.videoDrivers = ["nvidia"]; # Use the NVIDIA driver
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
 
   hardware.nvidia = {
     modesetting.enable = true; # Enable DRM kernel mode setting
@@ -57,17 +60,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/443D-A611";
     fsType = "exfat";
@@ -94,11 +86,14 @@
     experimental-features = nix-command flakes
   '';
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
+
+  users.users.jacobtw = {
+    isNormalUser = true;
+    description = "Jacob";
+    extraGroups = ["networkmanager" "wheel" "video"];
+    shell = pkgs.zsh;
+  };
+
+  home-manager.users.jacobtw = import ./home/jacobtw.nix;
 }

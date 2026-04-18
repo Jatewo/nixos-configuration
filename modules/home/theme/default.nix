@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./posy-cursor.nix
+  ];
+}

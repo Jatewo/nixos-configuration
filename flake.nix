@@ -20,39 +20,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, lanzaboote, ... } @ inputs: {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/desktop/configuration.nix
-	  ./hosts/desktop/hardware-configuration.nix
-
-          ({ config, pkgs, lib, ... }: {
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.config.permittedInsecurePackages = [
-              "libsoup-2.74.3"
-            ];
-
-            environment.systemPackages = [
-              pkgs.sbctl
-            ];
-
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-          })
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.jacobtw = import ./modules/home/default.nix;
-          }
-
-          lanzaboote.nixosModules.lanzaboote
-        ];
+  outputs = {...} @ inputs:
+    with import ./make.nix {inherit inputs;}; {
+      nixosConfigurations = {
+        desktop = mkNixOS {
+          hostname = "desktop";
+          system = "x86_64-linux";
+        };
       };
     };
-  };
 }

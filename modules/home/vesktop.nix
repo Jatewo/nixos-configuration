@@ -1,17 +1,14 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   vesktop-fixed = pkgs.symlinkJoin {
     name = "vesktop-fixed";
-    paths = [ pkgs.vesktop ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
+    paths = [pkgs.vesktop];
+    nativeBuildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/vesktop \
         --set PULSE_PROP "media.name='Discord'" \
     '';
   };
-in
-{
+in {
   home.packages = [
     vesktop-fixed
   ];
@@ -19,9 +16,9 @@ in
   xdg.desktopEntries."vesktop" = {
     name = "Discord";
     genericName = "Chat and Voice Communication (Vesktop)";
-    exec = "vesktop %U"; 
-    icon = "discord"; 
+    exec = "vesktop %U";
+    icon = "discord";
     terminal = false;
-    categories = [ "AudioVideo" "Audio" "Player" ]; 
+    categories = ["AudioVideo" "Audio" "Player"];
   };
 }

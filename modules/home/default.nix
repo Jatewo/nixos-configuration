@@ -1,18 +1,13 @@
-{inputs, ...}: {
+{...}: {
   imports = [
-    inputs.nixvim.homeModules.nixvim
     ./cli
     ./gaming
     ./media
-    ./other
+    ./social
+    ./network
     ./terminal
     ./nixvim
     ./browser
+    ./theme
   ];
-
-  home.username = "jacobtw";
-  home.homeDirectory = "/home/jacobtw";
-  home.stateVersion = "24.05";
-
-  programs.home-manager.enable = true;
 }

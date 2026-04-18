@@ -10,7 +10,7 @@
     ../../modules/nixos/i18n.nix
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/gaming.nix
-    ../../modules/nixos/sound.nix
+    ../../modules/nixos/pipewire.nix
     ../../modules/nixos/development.nix
     ../../modules/nixos/secure-boot.nix
     ../../modules/nixos/video.nix

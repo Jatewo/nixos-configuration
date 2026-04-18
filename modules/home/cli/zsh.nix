@@ -1,14 +1,27 @@
-{pkgs, ...}: {
-  programs.zsh.enable = true;
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.custom.cli.zsh;
+in {
+  options.custom.cli.zsh = {
+    enable = lib.mkEnableOption "Zsh";
+  };
 
-  home.packages = with pkgs; [
-    neofetch
-  ];
+  config = lib.mkIf cfg.enable {
+    programs.zsh.enable = true;
 
-  programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
-    icons = "auto";
-    git = true;
+    home.packages = with pkgs; [
+      neofetch
+    ];
+
+    programs.eza = {
+      enable = true;
+      enableZshIntegration = true;
+      icons = "auto";
+      git = true;
+    };
   };
 }

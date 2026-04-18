@@ -1,27 +1,38 @@
-{ pkgs, ... }:
-
 {
-  programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.custom.nixvim;
+in {
+  options.custom.nixvim = {
+    enable = lib.mkEnableOption "Nixvim";
+  };
 
-    viAlias = true;
-    vimAlias = true;
+  config = lib.mkIf cfg.enable {
+    programs.nixvim = {
+      enable = true;
+      defaultEditor = true;
 
-    withNodeJs = true;
-    extraPackages = with pkgs; [ 
-      gcc 
-      python3 
-      nodejs 
-      ripgrep      
-      fd
-      alejandra
-    ];
+      viAlias = true;
+      vimAlias = true;
 
-    imports = [
-      ./options.nix
-      ./ui.nix
-      ./plugins
-    ];
+      withNodeJs = true;
+      extraPackages = with pkgs; [
+        gcc
+        python3
+        nodejs
+        ripgrep
+        fd
+        alejandra
+      ];
+
+      imports = [
+        ./options.nix
+        ./ui.nix
+        ./plugins
+      ];
+    };
   };
 }

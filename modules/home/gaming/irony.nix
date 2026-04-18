@@ -1,4 +1,11 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.custom.gaming.irony;
+
   irony-pkg = pkgs.stdenv.mkDerivation rec {
     pname = "irony-mod-manager-pkg";
     version = "1.27.162";
@@ -39,14 +46,20 @@
     runScript = "${irony-pkg}/opt/irony-mod-manager/IronyModManager";
   };
 in {
-  home.packages = [
-    irony-mod-manager
-  ];
+  options.custom.gaming.irony = {
+    enable = lib.mkEnableOption "Irony Mod Manager";
+  };
 
-  xdg.desktopEntries.irony-mod-manager = {
-    name = "Irony Mod Manager";
-    exec = "irony-mod-manager";
-    terminal = false;
-    categories = ["Game" "Utility"];
+  config = lib.mkIf cfg.enable {
+    home.packages = [
+      irony-mod-manager
+    ];
+
+    xdg.desktopEntries.irony-mod-manager = {
+      name = "Irony Mod Manager";
+      exec = "irony-mod-manager";
+      terminal = false;
+      categories = ["Game" "Utility"];
+    };
   };
 }

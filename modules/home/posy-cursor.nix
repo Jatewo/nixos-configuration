@@ -8,6 +8,5 @@
     name = "Posy_Cursor";
     size = 24;
     gtk.enable = true;
-    kde.enable = true;
   };
 }

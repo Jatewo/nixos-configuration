@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   irony-pkg = pkgs.stdenv.mkDerivation rec {
     pname = "irony-mod-manager-pkg";
     version = "1.27.162";

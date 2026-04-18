@@ -1,6 +1,7 @@
 {
   plugins.neo-tree = {
     enable = true;
+    enablePreviewMode = true;
     settings = {
       closeIfLastWindow = true;
 

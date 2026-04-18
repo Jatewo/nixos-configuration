@@ -1,17 +1,13 @@
 {inputs, ...}: {
   imports = [
     inputs.nixvim.homeModules.nixvim
-    ./git.nix
+    ./cli
+    ./gaming
+    ./media
+    ./other
+    ./terminal
     ./nixvim
-    ./shell.nix
-    ./irony.nix
-    ./media.nix
-    ./vesktop.nix
-    ./kitty.nix
-    ./gaming.nix
-    ./brave.nix
-    ./parsec.nix
-    ./posy-cursor.nix
+    ./browser
   ];
 
   home.username = "jacobtw";

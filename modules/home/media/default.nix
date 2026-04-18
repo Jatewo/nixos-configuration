@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./pear-desktop.nix
+  ];
+}

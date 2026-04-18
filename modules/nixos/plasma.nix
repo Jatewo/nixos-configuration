@@ -9,6 +9,13 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    kate
+    konsole
+    oxygen
+  ];
+
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];

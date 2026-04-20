@@ -22,7 +22,7 @@
     {
       mode = "n";
       key = "<C-n>";
-      action = "<cmd>Neotree toggle<CR>";
+      action = "<cmd>Neotree toggle dir=./<CR>";
       options.silent = true;
     }
   ];

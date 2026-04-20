@@ -6,8 +6,6 @@
 }: let
   cfg = config.custom.network.parsec;
 in {
-  nixpkgs.config.allowUnfree = true;
-
   options.custom.network.parsec = {
     enable = lib.mkEnableOption "Parsec";
   };

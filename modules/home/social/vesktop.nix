@@ -16,8 +16,6 @@
     '';
   };
 in {
-  nixpkgs.config.allowUnfree = true;
-
   options.custom.social.vesktop = {
     enable = lib.mkEnableOption "Vesktop";
   };

@@ -13,6 +13,7 @@
     ./neo-tree.nix
     ./bufferline.nix
     ./noice.nix
+    ./dashboard.nix
   ];
 
   plugins.comment = {

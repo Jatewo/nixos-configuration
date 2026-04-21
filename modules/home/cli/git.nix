@@ -9,6 +9,9 @@ in {
     enable = lib.mkEnableOption "Git";
   };
   config = lib.mkIf cfg.enable {
-    programs.git.enable = true;
+    programs.git = {
+      enable = true;
+      signing.format = "ssh";
+    };
   };
 }

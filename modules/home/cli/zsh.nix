@@ -14,7 +14,7 @@ in {
     programs.zsh.enable = true;
 
     home.packages = with pkgs; [
-      neofetch
+      fastfetch
     ];
 
     programs.eza = {

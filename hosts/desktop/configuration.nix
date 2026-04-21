@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/core.nix
@@ -13,6 +17,10 @@
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/nvidia.nix
   ];
+
+  environment.variables.EDITOR = lib.mkOverride 900 "nvim";
+  environment.variables.VISUAL = lib.mkOverride 900 "nvim";
+  environment.variables.SUDO_EDITOR = lib.mkOverride 900 "nvim";
 
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
@@ -30,6 +38,7 @@
 
   fileSystems."/home/jacobtw/.steam/steam/steamapps/compatdata/2252570/pfx/drive_c/users/steamuser/Documents/Sports Interactive/Football Manager 2024" = {
     device = "/mnt/shared/OneDrive/Dokumenter/Sports Interactive/Football Manager 2024";
+    fsType = "exfat";
     options = ["bind"];
   };
 

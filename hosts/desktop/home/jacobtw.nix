@@ -23,6 +23,7 @@
     };
     media = {
       pear-desktop.enable = true;
+      webcam.enable = true;
     };
     network = {
       parsec.enable = true;

@@ -40,5 +40,14 @@ in {
     };
 
     xdg.configFile."kitty/tab_bar.py".source = ./tab_bar.py;
+
+    xdg.terminal-exec = {
+      enable = true;
+      settings = {
+        default = [
+          "kitty.desktop"
+        ];
+      };
+    };
   };
 }

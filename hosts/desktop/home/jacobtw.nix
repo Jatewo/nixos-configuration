@@ -31,6 +31,7 @@
     nixvim.enable = true;
     social = {
       vesktop.enable = true;
+      teams.enable = true;
     };
     terminal = {
       kitty.enable = true;

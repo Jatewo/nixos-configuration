@@ -16,6 +16,7 @@
     ../../modules/nixos/video.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/razer.nix
   ];
 
   environment.variables.EDITOR = lib.mkOverride 900 "nvim";

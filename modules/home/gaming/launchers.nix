@@ -14,7 +14,14 @@ in {
     home.packages = with pkgs; [
       heroic
       satisfactorymodmanager
-      prismlauncher
+      (prismlauncher.override {
+        jdks = [
+          jdk8
+          jdk17
+          jdk21
+        ];
+      })
+      xclicker
     ];
   };
 }

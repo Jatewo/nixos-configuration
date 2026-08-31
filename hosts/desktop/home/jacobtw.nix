@@ -27,6 +27,7 @@
     };
     network = {
       parsec.enable = true;
+      hamachi.enable = true;
     };
     nixvim.enable = true;
     social = {

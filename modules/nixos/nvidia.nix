@@ -1,7 +1,10 @@
 {config, ...}: {
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelParams = ["nvidia-drm.modeset=1"]; # Enable DRM kernel mode setting for NVIDIA
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1" # Enable DRM kernel mode setting for NVIDIA
+    "usbcore.autosuspend=-1" # Disable USB autosuspend
+  ];
   services.xserver.videoDrivers = ["nvidia"]; # Use the NVIDIA driver
 
   hardware.nvidia = {

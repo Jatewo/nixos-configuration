@@ -20,6 +20,7 @@ in {
           jdk17
           jdk21
         ];
+        additionalLibs = [xorg.libXcursor];
       })
       xclicker
     ];

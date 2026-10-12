@@ -7,6 +7,11 @@
   ];
   services.xserver.videoDrivers = ["nvidia"]; # Use the NVIDIA driver
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # Enable 32-bit support for graphics drivers
+  };
+
   hardware.nvidia = {
     modesetting.enable = true; # Enable DRM kernel mode setting
     powerManagement.enable = false; # Enable NVIDIA power management
@@ -14,6 +19,4 @@
     nvidiaSettings = true; # Enable nvidia-settings utility
     package = config.boot.kernelPackages.nvidiaPackages.stable; # Use the stable NVIDIA driver package
   };
-
-  hardware.graphics.enable32Bit = true; # Enable 32-bit support for graphics drivers
 }

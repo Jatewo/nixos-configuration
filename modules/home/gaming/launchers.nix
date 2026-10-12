@@ -19,6 +19,7 @@ in {
           jdk8
           jdk17
           jdk21
+          jdk25
         ];
         additionalLibs = [xorg.libXcursor];
       })
